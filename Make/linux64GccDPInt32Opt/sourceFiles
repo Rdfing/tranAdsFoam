@@ -1,0 +1,4 @@
+SOURCE = \
+tranAdsFoam.C \
+
+# sources
