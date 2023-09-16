@@ -10,7 +10,7 @@ This solver is developed to simulate turbulence mixing and chemical adsorption i
 - Examples of inverse modeling of adsorption and headloss are provided in the reference
 
 Here is an example 
-![Alt Text](https://github.com/Rdfing/interAdsFoam/blob/main/example.gif)
+![Alt Text](https://github.com/Rdfing/tranAdsFoam/blob/main/Case1_column_test_SLR_40/solution_sample.gif)
 
 ## Prerequisites
 OpenFOAM-v2212
