@@ -1,4 +1,4 @@
-# tranAdsFoam [![Github All Releases](https://img.shields.io/github/downloads/Rdfing/interAdsFoam/total.svg)]()
+# tranAdsFoam [![Github All Releases](https://img.shields.io/github/downloads/Rdfing/tranAdsFoam/total.svg)]()
 
 Macro-scale transport adsorption solver. The solver is developed to simulate chemical adsorption or particle filtration through a fixed bed reactor.
 
