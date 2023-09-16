@@ -13,7 +13,7 @@ Here is an example
 ![Alt Text](https://github.com/Rdfing/interAdsFoam/blob/main/example.gif)
 
 ## Prerequisites
-OpenFOAM-v1912 
+OpenFOAM-v2212
 
 ## Authors
 Haochen Li, PhD <br />
