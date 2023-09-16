@@ -3,7 +3,7 @@
 Macro-scale transport adsorption solver. The solver is developed to simulate chemical adsorption or particle filtration through a fixed bed reactor.
 
 ## Description
-This solver is developed to simulate turbulence mixing and chemical adsorption in urban water treatment systems. The solver integrates VOF with chemical adsorption.
+This solver is developed to simulate chemical transport and adsorption in urban water treatment systems.
 - Non-equilibrium (Langmuir-like) adsorption model 
 - First-order time splitting for transport and reaction (for now)
 - Stiff ODE solver for reaction
