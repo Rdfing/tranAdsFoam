@@ -1,0 +1,38 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// molecurlar diffusivity
+D               8.79e-10; 
+// hydrodynamic diffusivity
+Dh              3.78e-6; 
+
+// Fixed bed physcial parameters (shoud not be calibrated)
+rhop            2.46e3; // adsorbent density [kg/m3]
+porosity        0.74; // porosity
+// ************************************************************************* //
+// Langmuir isotherm parameters (fit the isotherm curve) in SI unit!!!!
+Langmuir_qMax    8.7164e-4;//0.65e-3;
+alpha_ref   #calc "$rhop*(1-$porosity)/$porosity";
+K        1330.2; // from the isothem, the solution can be sensitive to this value...
+
+// ************************************************************************* //
+kf      #calc "$K*$kr*$Langmuir_qMax*$alpha_ref"; // Forward reaction rate
+
+// parameter that need to calibrate
+kr      0.0004486931357; //backward/reverse reaction rate
+
+freezeVelocity true;//false; // freeze the velocity field
+// ************************************************************************* //

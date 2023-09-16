@@ -1,0 +1,54 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         CrankNicolson 0.9;//Euler;
+}
+
+gradSchemes
+{
+    default         cellLimited Gauss linear 0.5;
+    grad(U)         cellLimited Gauss linear 1;
+    grad(k)         cellLimited Gauss linear 1;
+    grad(omega)     cellLimited Gauss linear 1;
+}
+
+divSchemes
+{
+    default         none;
+    div((phi|porosity),Y)      Gauss linearUpwind grad(Y);//vanLeer;//upwind;//linearUpwind grad(T);
+}
+
+laplacianSchemes
+{
+    default         Gauss linear orthogonal;
+    laplacian(D,Y) Gauss linear orthogonal;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         orthogonal;//limited 1; //corrected;
+}
+
+
+// ************************************************************************* //

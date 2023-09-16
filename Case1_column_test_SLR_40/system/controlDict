@@ -1,0 +1,116 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     tranAdsFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         60000;
+
+deltaT          1;
+
+writeControl    runTime;//adjustableRunTime;
+
+writeInterval   100000;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+
+// ************************************************************************* //
+functions
+{
+    T_minMax
+    {
+        type            fieldMinMax;
+        libs            (fieldFunctionObjects);
+        enabled 			false;
+        log             false;
+        writeControl    timeStep; //writeTime;
+        writeInterval   1;
+        fields          
+        (Y);
+    }
+
+
+    T_mass
+    {
+        type            volFieldValue;
+        libs            (fieldFunctionObjects);
+        enabled 			false;
+        writeControl    timeStep;
+        writeInterval   1;
+        writeFields     false;
+        log             false;
+
+        operation       volIntegrate;
+
+        fields
+        (
+            Y
+        );
+    }
+
+
+    surfaceMonitor_outlet_T
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+		enabled 			true;
+		executeControl      timeStep;
+        executeInterval     1;
+	
+        writeControl        timeStep; // wrtite based on times step
+		//writeControl        writeTime; // wirate based on output step
+		writeInterval       1;
+
+        log             no;
+        writeFields     no;
+        regionType      patch;
+        name            outlet;
+        
+
+        operation         weightedAverage;
+        weightField     phi;
+		//Sample field
+        fields
+        (
+            Y
+        );
+		// Write the total area of the faces
+		//writeArea       yes;
+    }
+
+
+}
+
+// ************************************************************************* //
