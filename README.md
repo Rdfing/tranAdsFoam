@@ -9,7 +9,7 @@ This solver is developed to simulate chemical transport and adsorption in urban 
 - Stiff ODE solver for reaction
 - Examples of inverse modeling of adsorption and headloss are provided in the reference
 
-Here is an example 
+Here is an example of a 1D column test, i.e., case 1
 ![Alt Text](https://github.com/Rdfing/tranAdsFoam/blob/main/Case1_column_test_SLR_40/solution_sample.gif)
 
 ## Prerequisites
